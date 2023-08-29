@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Calcul de l'impôt Zorglub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 30px;
+      background-color: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+      margin-top: 50px;
+    }
+
+    .form-title {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 27px;
+      font-weight: bold;
+      color: #343a40;
+    }
+
+    .form-group label {
+      font-weight: bold;
+      color: #343a40;
+    }
+
+    .form-group input[type="number"],
+    .form-group select {
+      padding: 12px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      width: 100%;
+    }
+
+    .form-group input[type="number"]:focus,
+    .form-group select:focus {
+      outline: none;
+      box-shadow: 0px 0px 5px #ced4da;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+      font-weight: bold;
+      width: 100%;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+
+    .form-result {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="form-title">Calcul de l'impôt Zorglub</h1>
+    <form id="impotForm">
+      <div class="form-group">
+        <label for="ageInput">Âge :</label>
+        <input type="number" class="form-control" id="ageInput" min="0" required>
+      </div>
+      <div class="form-group">
+        <label for="sexeSelect">Sexe :</label>
+        <select class="form-control" id="sexeSelect" required>
+          <option value="">Sélectionner</option>
+          <option value="homme">Homme</option>
+          <option value="femme">Femme</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Vérifier</button>
+      </div>
+    </form>
+    <div id="resultat" class="form-result" style="display: none;"></div>
+  </div>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+  <script>
+    const form = document.getElementById('impotForm');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const age = parseInt(document.getElementById('ageInput').value);
+      const sexe = document.getElementById('sexeSelect').value;
+      let resultat = document.getElementById('resultat');
+
+      if (sexe === 'homme' && age > 20) {
+        resultat.innerHTML = "L'habitant est imposable.";
+      } else if (sexe === 'femme' && age >= 18 && age <= 35) {
+        resultat.innerHTML = "L'habitant est imposable !";
+      } else {
+        resultat.innerHTML = "L'habitant n'est pas imposable :)";
+      }
+
+      resultat.style.display = 'block';
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+</body>
+</html>
